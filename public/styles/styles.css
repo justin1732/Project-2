@@ -1,3 +1,19 @@
 .list-group-item {
   line-height: 2.5;
 }
+body {
+  background-image: url("https://res.cloudinary.com/grohealth/image/upload/v1583748171/DCUK/Content/iStock-857145602.jpg");
+}
+.text-color {
+  color: #30d2df;
+  /* font-family: "Arbutus+Slab";  */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 24px;
+  text-shadow: 3px 2px 2px #148314;
+}
+.transparent-box{
+  background-color:gray;
+  background: rgba(128,128,128, 0.5);
+  padding: 5px;
+}
+

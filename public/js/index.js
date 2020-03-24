@@ -78,8 +78,8 @@ var handleFormSubmit = function(event) {
     refreshExamples();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  $exampleText.val("Welcome to Forager!");
+  $exampleDescription.val("Here you can store your food inventory to let us help you find recipes with what you have on hand.  Use Forager to explore new culinary endevours and avoid food waste.");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
