@@ -1,4 +1,6 @@
 require("dotenv").config();
+var request = require ("request");
+var axios = require ("axios");
 var express = require("express");
 var exphbs = require("express-handlebars");
 
@@ -44,4 +46,47 @@ db.sequelize.sync(syncOptions).then(function() {
   });
 });
 
+//Function for displaying information from the Recipe Puppy API
+function findfood() {
+var Ingredient = "orange";
+var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
+
+request(queryUrl, function (error, response) {
+
+if (!error && response.statusCode === 200) {
+console.log(response);
+
+}});
+}
+
+function findfood() {
+    var Ingredient = "orange";
+    var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
+    
+    request(queryUrl, function (error, response) {
+    
+    if (!error && response.statusCode === 200) {
+    console.log(response);
+    
+    }});
+    }
+
+
+//Keys and AXIOS for Nutrionix API
+axios.get('https://trackapi.nutritionix.com/v2/search/instant?query=apple', {
+ headers: {
+   'x-app-id': '1b56da4f',
+   'x-app-key': '1280ff1c8a5c5c57611dce7ae53c9e09'
+
+ },
+}
+).then (function (response) {
+       console.log (response);
+   })
+   .catch (function (error){
+       console.log (error);
+   });
+
+//Call to the PuppyRecipe API
+   findfood();
 module.exports = app;
