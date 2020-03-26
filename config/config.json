@@ -2,7 +2,7 @@
   "development": {
     "username": "project2",
     "password": "SecretPassword",
-    "database": "exampledb",
+    "database": "fooddb",
     "host": "localhost",
     "dialect": "mysql"
   },
