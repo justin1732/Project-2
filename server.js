@@ -1,14 +1,13 @@
 require("dotenv").config();
-var request = require ("request");
-var axios = require ("axios");
+var request = require("request");
+var axios = require("axios");
 var express = require("express");
 var passport = require("passport");
 var exphbs = require("express-handlebars");
 var db = require("./models");
 var mysql = require("mysql2");
-var jsdom = require ('jsdom');
-$ = require("jquery") (new jsdom.JSDOM().window);
-
+var jsdom = require("jsdom");
+$ = require("jquery")(new jsdom.JSDOM().window);
 
 var app = express();
 var PORT = process.env.PORT || 3000;
@@ -53,27 +52,25 @@ db.sequelize.sync(syncOptions).then(function() {
 
 //Function for displaying information from the Recipe Puppy API
 function findfood() {
-var Ingredient = "orange";
-var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
+  var Ingredient = "orange";
+  var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
 
-request(queryUrl, function (error, data) {
+  request(queryUrl, function(error, data) {
+    if (!error && data.statusCode === 200) {
+      // console.log(JSON.parse(data.body).results)
+      var food = JSON.parse(data.body).results;
+      // console.log (food.body.results);
+      for (var i = 0; i < food.length; i++) {
+        console.log(i);
+        console.log("food name:" + food[i].title);
+        console.log("Weblink: " + food[i].href);
+        console.log("Ingredients: " + food[i].ingredients);
+        console.log("Food Image: " + food[i].thumbnail);
+      }
 
-if (!error && data.statusCode === 200) {
-
-
-    var food = data.body.results;
-// console.log (food.body.results);
-    for (var i = 0; i < food.length; i++){
-      console.log (i);
-      console.log ("food name:" + food[i].title);
-      console.log ("Weblink: " + food[i].href);
-      console.log ("Ingredients: " + food[i].ingredients);
-      console.log ("Food Image: " + food[i].thumbnail)
     }
-    
-    }});
-    }
-
+  });
+}
 
 //Keys and AXIOS for Nutrionix API
 // axios.get('https://trackapi.nutritionix.com/v2/search/instant?query=apple', {
@@ -92,8 +89,6 @@ if (!error && data.statusCode === 200) {
 
 //Call to the PuppyRecipe API
 
-
-
 // $("#user-Login").on("click", function(){
 
 // });
@@ -107,16 +102,16 @@ if (!error && data.statusCode === 200) {
 //   .catch(error =>{
 //     console.log("something Broke");
 //   });
-  // var query = db.sequelize.query(
-  //   "INSERT INTO Pantry SET ?",
-  //   {
-  //     food: userName
-  //   },
-  //   function(err,res) {
-  //     if(err) throw err;
+// var query = db.sequelize.query(
+//   "INSERT INTO Pantry SET ?",
+//   {
+//     food: userName
+//   },
+//   function(err,res) {
+//     if(err) throw err;
 
 //   );
 
-   findfood();
+findfood();
 //module.exports = login_signup;
 module.exports = app;
