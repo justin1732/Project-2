@@ -5,11 +5,13 @@ body {
   background-image: url("https://res.cloudinary.com/grohealth/image/upload/v1583748171/DCUK/Content/iStock-857145602.jpg");
 }
 .text-color {
-   color: #30d2df;
+   /* color: #30d2df; */
+   color: #ffffff;
    /* font-family: "Arbutus+Slab";  */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-family: 'Mallanna', sans-serif;
+  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   font-weight: 24px;
-  text-shadow: 3px 2px 2px #148314;
+  /* text-shadow: 3px 2px 2px; */
 }
 .transparent-box{
   background-color:gray;

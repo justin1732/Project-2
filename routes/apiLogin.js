@@ -1,7 +1,7 @@
 var db = require("../models");
 
-module.exports = function(app) {
-    app.post("/api/login", function(req, res) {
+module.exports = function(app, passport) {
+    app.post("/api/login", passport.authenticate('local'), function(req, res) {
         // db.examples.create(req.body).then(function(dbExample) {
         //   res.json(dbExample);
         // });
@@ -9,6 +9,7 @@ module.exports = function(app) {
         //does password match
         //if there okay
         //if not 401
+        res.json(req.user);
 
       });
 
@@ -21,3 +22,5 @@ module.exports = function(app) {
         });
     });
 }
+
+// Here we are creating a callback function to be used for routes that require authentication

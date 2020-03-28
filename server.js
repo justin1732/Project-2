@@ -8,16 +8,86 @@ var db = require("./models");
 var mysql = require("mysql2");
 var jsdom = require("jsdom");
 var canvas = require("canvas");
-$ = require("jquery")(new jsdom.JSDOM().window);
+var session = require("express-session");
+var passport = require("passport");
+var LocalStrategy = require("passport-local").Strategy;
 
 var app = express();
 var PORT = process.env.PORT || 3000;
 
+/**
+ * 
+ *  SETTING UP MIDDLE WHERE FOR BODY OBJECT ENCODING
+ */
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
+/**
+ * 
+ *   SETTING UP PASSPORT 
+ * 
+ * 
+ * 
+ * 
+ */
+app.use(session({ secret: "miw", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.use(new LocalStrategy(
+  // simple, static login strategy based on the username
+  // "baduser" will be rejected and invalid username, everyone else has a password of "password"
+  
+  function(username, password, done) {
+    console.log("In local strategy", username, password)
+    db.User.findOne({
+      where:{
+        userName: username,
+        password: password
+    }
+  }).then(function(data){
+    // When a user tries to sign in this code runs
+    // If we're trying to log in with an invalide username
+    console.log("Found user in data base", data.userName, data.password)
+    var pword = data.password;
+    var uname = data.userName;
+    console.log("INT LOCAL STRATEGY", username, password)
+
+    if (!username || username.toLowerCase() != uname.toLowerCase()) {
+      return done(null, false, {
+        message: "Incorrect username."
+      });
+    }
+    // If we're using an invalid password
+    else if (password != pword) {
+      return done(null, false, {
+        message: "Incorrect password."
+      });
+    }
+    // successful login, return the user -- which consists of an object holding the username
+    let user = {username};  
+    return done(null, user);
+    }) 
+    
+  }
+));
+
+passport.serializeUser(function(user, callback) {
+  callback(null, user.username);
+});
+
+// the deserialized user is an object with a username property -- which is availabe as request.user
+passport.deserializeUser(function(username, callback) {
+  callback(null, {username});
+});
+
+
+/**
+ * 
+ *  SET UP HANDLE BARS
+ */
 // Handlebars
 app.engine(
   "handlebars",
@@ -28,9 +98,11 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-require("./routes/apiRoutes")(app);
+require("./routes/apiLogin")(app, passport);
 require("./routes/htmlRoutes")(app);
-require("./routes/apiLogin")(app);
+require("./routes/apiRoutes")(app);
+
+
 
 var syncOptions = { force: false };
 
@@ -67,12 +139,12 @@ function findfood() {
         console.log("Weblink: " + food[i].href);
         console.log("Ingredients: " + food[i].ingredients);
         console.log("Food Image: " + food[i].thumbnail);
-        let recipeDiv = $('<div id="recipe">');
-        let foodpic = food[i].thumbnail;
-        let foodimg =$("<img>").attr("src", foodpic);
-        recipeDiv.append(foodimg, $("<br>"));
-        $("#recipeWindow").html(`<iframe src="` + food[i].href + `" height=450 width=800></iframe>`);
-      }
+      //   let recipeDiv = $('<div id="recipe">');
+      //   let foodpic = food[i].thumbnail;
+      //   let foodimg =$("<img>").attr("src", foodpic);
+      //   recipeDiv.append(foodimg, $("<br>"));
+      //   $("#recipeWindow").html(`<iframe src="` + food[i].href + `" height=450 width=800></iframe>`);
+       }
      
       // $(document).ready(function () {
       //   var thisVideo = localStorage.getItem("youtubeLink")
@@ -165,7 +237,7 @@ function findfood() {
 
 //   );
 
-findfood();
+// findfood();
 //module.exports = login_signup;
 module.exports = app;
 

@@ -10,16 +10,29 @@
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <h3>Sample Recipe:</h3>
-             <div id = "recipe">Should have an ingredient</div>
-             <br>BRRRR tags!</br>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+                          
+            <input type="text" id="ingredient" name="ingredient" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
                 <!-- end -->
 
         <h3>Sample Ingredients</h3>
-        <ul id="example-list" class="list-group">
+        <h1>USER HERE : {{user}}</h1>
+
+         
+        <ul id="food-list" class="list-group">
+
+          {{!-- {{#each_upto foodItems 3}}
+            <h1>{{this.title}}</h1>
+            <iframe src="{{this.href}}"></iframe>
+
+          {{/each_upto}} --}}
+
+
+
+
+{{!--           
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="example/{{this.id}}">{{this.text}}</a>
@@ -32,8 +45,8 @@
         </div>
         <div class="col recipe">
 
-        </div>
-          {{/each}}
+        </div> --}}
+          {{!-- {{/each}} --}}
         </ul>
       </div>
     </div>

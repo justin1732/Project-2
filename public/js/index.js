@@ -3,6 +3,7 @@ var $exampleText = $("#example-text");
 var $exampleDescription = $("#example-description");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $foodList = $("#food-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -27,9 +28,20 @@ var API = {
       url: "api/examples/" + id,
       type: "DELETE"
     });
+  },
+
+  getFoodItems: function(ingredient) {
+    return fetch(`api/food/${ingredient}`);
+    // return $.ajax({
+    //   url: `api/food/${ingredient}`,
+    //   type: 'GET'
+    // })
   }
 };
+// --------------------------
 
+
+// ---------------------
 // refreshExamples gets new examples from the db and repopulates the list
 var refreshExamples = function() {
   API.getExamples().then(function(data) {
@@ -63,22 +75,44 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
+  let ingredient = $("#ingredient").val();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
+  console.log("Ingredient is: ", ingredient);
+  API.getFoodItems(ingredient)
+  .then(function(res) {
+    console.log("Res: ", res)
+    return res.json()
+  })
+  .then((data)=> {
+    console.log("THE SDATA is: ", data)
+    let foodItems = data.foodItems;
+    console.log("food items: ", foodItems)
+    for(let i = 0; i < foodItems.length; i++) {
+      $foodList.append($(`<li>${foodItems[i].title}</li>`))
+    }
+    
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
+  })
+  .catch((err) => {
+    console.log("err", err)
+  })
+  // var example = {
+  //   text: $exampleText.val().trim(),
+  //   description: $exampleDescription.val().trim()
+  // };
 
-  $exampleText.val("Welcome to Forager!");
+  // if (!(example.text && example.description)) {
+  //   alert("You must enter an example text and description!");
+  //   return;
+  // }
+
+  // API.saveExample(example).then(function() {
+  //   refreshExamples();
+  // });
+
+  $exampleText.val("Welcome to Forager!" + ingredient);
+  
   $exampleDescription.val("Here you can store your food inventory to let us help you find recipes with what you have on hand.  Use Forager to explore new culinary endevours and avoid food waste.");
 };
 
