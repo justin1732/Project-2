@@ -59,7 +59,9 @@ module.exports = function(app) {
   });
 //Function for displaying information from the Recipe Puppy API
 function findfood(callback) {
+  //Need to somehow make this User Input from DBA or by searching
   var Ingredient = "orange";
+  
   var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
 
   request(queryUrl, function(error, data) {
