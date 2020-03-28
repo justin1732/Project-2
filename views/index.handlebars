@@ -10,6 +10,8 @@
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <h3>Sample Recipe:</h3>
+             <div id = "recipe">Should have an ingredient</div>
+             <br>BRRRR tags!</br>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
@@ -21,14 +23,30 @@
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
             <a href="example/{{this.id}}">{{this.text}}</a>
+           <
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
+
+                 <div class="col ingredient">
+
+        </div>
+        <div class="col recipe">
+
+        </div>
           {{/each}}
         </ul>
       </div>
     </div>
   </div>
+  <div id="recipeWindow">
+  
+    <iframe src="beep" height=400 width=800></iframe>
+  </div>
+  <div>
+    <button id="natesButton">Nate's Button is Not a Lever</button>
+  </div>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

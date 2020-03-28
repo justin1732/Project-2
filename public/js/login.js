@@ -11,8 +11,8 @@
 var userName;
 var password;
 $("#user-Signup").on("click", function(){
-    var userName = $(this).attr("aria-label", "userName").val().trim();
-    var password = $(this).attr("aria-label", "password").val().trim();
+    var userName = $(this).attr("userName").val().trim();
+    var password = $(this).attr("password").val().trim();
     var login = {userName:userName,password:password};
     console.log(userName);
     $.ajax({
