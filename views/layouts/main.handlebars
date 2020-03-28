@@ -17,7 +17,8 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
   <script src="/js/login.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet">
+  {{!-- <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet"> --}}
+  <link href="https://fonts.googleapis.com/css?family=Mallanna&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/styles/styles.css">
 </head>
 
@@ -38,23 +39,15 @@
           Dropdown
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Recipe Search</a>
+          <a class="dropdown-item" href="recipe">Recipe Search</a>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Ingredient Search</a>
+          <a class="dropdown-item" href="ingredients">Ingredient Search</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item">
+        <a class="nav-link" href="/login" id="loginButton">
           Login/SignUp
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="User Name" aria-label="userName">
-              <input class="form-control mr-sm-2" type="search" placeholder="Password" aria-label="password">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="user-Login" href="#">login</button>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="user-Signup" >Sign Up</button>
-          </form>
-        </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
