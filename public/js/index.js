@@ -85,7 +85,7 @@ var handleFormSubmit = function(event) {
     return res.json()
   })
   .then((data)=> {
-    console.log("THE SDATA is: ", data)
+    console.log("THE DATA is: ", data)
     let foodItems = data.foodItems;
     console.log("food items: ", foodItems)
     for(let i = 0; i < foodItems.length; i++) {
