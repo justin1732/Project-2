@@ -3,18 +3,26 @@ const request = require("request");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/food/:ingredient", passportAuthenticationMiddleware,function(req, res) {
+  app.get("/api/recipe",function(req, res) {
     // db.Example.findAll({}).then(function(dbExamples) {
     //   res.json(dbExamples);
     // });
-  
     findfood((foodObj)=> {
         console.log("The food object from root endpoint", foodObj)
         res.json({
           foodItems: foodObj
         });
-      }, req.params.ingredient)
+      })
   });
+
+  app.get("/api/users", function(req, res) {
+    console.log("in /api/users")
+    db.User.findAll({})
+    .then(function(data) {
+      console.log("the users are suppose to be: ", data);
+      res.json({users: data});
+    })
+  })
 
   // Create a new example
   app.post("/api/examples", passportAuthenticationMiddleware,function(req, res) {
@@ -33,9 +41,9 @@ module.exports = function(app) {
 };
 
 
-function findfood(callback, ingredient) {
-  var Ingredient = "orange";
-  var queryUrl = "http://www.recipepuppy.com/api/?i=" + ingredient;
+function findfood(callback) {
+  var Ingredient = ingredient;
+  var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
 
   request(queryUrl, function(error, data) {
     if (!error && data.statusCode === 200) {
@@ -47,6 +55,8 @@ function findfood(callback, ingredient) {
     });
   }
 
+
+   
 
   const passportAuthenticationMiddleware = (request, response, next) => {
     if (request.user) {

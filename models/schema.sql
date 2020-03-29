@@ -1,20 +1,30 @@
+  
 DROP DATABASE IF EXISTS fooddb;
 CREATE DATABASE fooddb;
+use fooddb;
 
-DROP table IF EXISTS Pantry;
+
+
 CREATE TABLE foodstorage (
   id int(11) NOT NULL AUTO_INCREMENT,
  food varchar(45) not null,
  calories int not null,
  PRIMARY KEY (id)
 ) ;
-DROP table IF EXISTS CookBook;
+
 CREATE TABLE cooking (
   id int(11) NOT NULL AUTO_INCREMENT,
-  title varchar(45) DEFAULT NULL,
-  Ref varchar(5) DEFAULT NULL,
+  title varchar(45) not NULL,
+  Ref varchar(5) not NULL,
   PRIMARY KEY (id)
 ) ;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+create table user (
+  id int(11) not null auto_increment,
+  userName VARCHAR(45) not NULL,
+  password VARCHAR(45) not NULL,
+  PRIMARY KEY (id)
+) ;
+use fooddb;
+insert into user (userName, password)
+values ("Someone", "Password")

@@ -42,14 +42,12 @@ passport.use(new LocalStrategy(
   
   function(username, password, done) {
     console.log("In local strategy", username, password)
-    db.User.findOne({
-      where:{
-        userName: username,
-        password: password
-    }
+    db.User.findAll({
+    
   }).then(function(data){
     // When a user tries to sign in this code runs
     // If we're trying to log in with an invalide username
+    console.log("in strat", data)
     console.log("Found user in data base", data.userName, data.password)
     var pword = data.password;
     var uname = data.userName;
@@ -98,6 +96,7 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+
 require("./routes/apiLogin")(app, passport);
 require("./routes/htmlRoutes")(app);
 require("./routes/apiRoutes")(app);

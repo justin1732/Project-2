@@ -14,9 +14,10 @@ module.exports = function(app, passport) {
       });
 
     app.post("/api/signup",function(req,res){
-        db.User.find(req.body).then(function(dbUser){
-            console.log("you exist");
-        });
+        // db.User.find(req.body).then(function(dbUser){
+        //     console.log("you exist");
+        // });
+        console.log("the body has:", req.body);
         db.User.create(req.body).then(function(dbUser) {
             res.json(dbUser);
         });

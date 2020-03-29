@@ -1,6 +1,6 @@
 var db = require("../models");
 var express = require ("express");
-var router = express.Router();
+// var router = express.Router();
 var request = require ("request");
 
 // router.get('/', function (req, res, next){
@@ -43,41 +43,66 @@ module.exports = function(app) {
   });
 
 
-
-  app.get("/api/food/:ingredient", function(req, res) {
-    // db.Example.findAll({}).then(function(dbExamples) {
-    //   res.json(dbExamples);
-    // });
+  app.get("/ingredients", function(req, res) {
+    res.render('ingredients', {});
   
-
-    findfood((foodObj)=> {
-        console.log("The food object from root endpoint", foodObj)
+    findIngredients((searchObj)=> {
+        console.log("Shopping List: ", searchObj)
         res.json({
-          foodItems: foodObj
+          searchItems: searchObj
         });
-      }, req.params.ingredient)
+      })
+  });
+// res.setHeader("headers", ["x-app-id=1b56da4f","x-app-key=1280ff1c8a5c5c57611dce7ae53c9e09"])
+  function findIngredients(callback){
+    var iSearch = "vegetables"
+    
+    // res.setHeader("headers", ["x-app-id=1b56da4f","x-app-key=1280ff1c8a5c5c57611dce7ae53c9e09"])
+    var queryURL = "https://trackapi.nutritionix.com/v2/search/instant?query=" + iSearch;
+    // var parameters = {
+    //   url: queryURL,
+    //   method: "GET",
+    //   headers: {
+    //     'x-app-id': '1b56da4f',
+    //     'x-app-key': '1280ff1c8a5c5c57611dce7ae53c9e09'
+    //   }
+    // }
+    request(queryURL, function(error, data){
+      if (!error && data.statusCode === 200) {
+        var ingredient = JSON.parse(data.body).results;
+      
+         callback(ingredient);
+  
+        }
+    })
+    }
+
+  app.get("/recipe", function(req, res) {
+    res.render('recipe', {});
+  
+    // findfood((foodObj)=> {
+    //     console.log("The food object from root endpoint", foodObj)
+    //   })
   });
 //Function for displaying information from the Recipe Puppy API
-function findfood(callback) {
-  //Need to somehow make this User Input from DBA or by searching
-  var Ingredient = "orange";
+// function findfood(callback) {
+//   //Need to somehow make this User Input from DBA or by searching
+//   var Ingredient = ingredient;
   
-  var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
+//   var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
 
-  request(queryUrl, function(error, data) {
-    if (!error && data.statusCode === 200) {
-      var food = JSON.parse(data.body).results;
+//   request(queryUrl, function(error, data) {
+//     if (!error && data.statusCode === 200) {
+//       var food = JSON.parse(data.body).results;
     
-       callback(food);
+//        callback(food);
 
-      }
-    });
-  }
-
-
+//       }
+//     });
+//   };
 
 
-  // Load example page and pass in an example by id
+   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
 
