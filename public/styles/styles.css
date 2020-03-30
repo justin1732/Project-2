@@ -21,4 +21,26 @@ body {
 #recipeWindow {
   align-items: center;
 }
-
+#recipeAdd, #ingredientsAdd {
+  width: fit-content;
+  text-align: center;
+  background-color: blue;
+  color: aliceblue;
+  font-weight: bold;
+  border-style: solid;
+  border-color: aqua;
+  border-radius: 50px;
+  box-shadow: rgb(44, 43, 43) 4px 4px;
+}
+#recipeLink{
+  width: fit-content;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  color: aliceblue;
+  border-style: solid;
+  border-color: aqua;
+  border-radius: 50px;
+  box-shadow: rgb(44, 43, 43) 4px 4px;
+  margin: 10px;
+  padding: 5px;
+}

@@ -18,6 +18,9 @@ module.exports = function(app) {
   app.get("/login", function(req, res) {
     res.render('login', {});
   });
+  app.get("/signup", function(req, res) {
+    res.render('signup', {});
+  });
 
   
   app.get("/ingredients",passportAuthenticationMiddleware, function(req, res) {
@@ -107,6 +110,10 @@ module.exports = function(app) {
 const passportAuthenticationMiddleware = (request, response, next) => {
   if (request.user) {
     return next();
+  }
+  console.log("path in authentication: ", request.url)
+  if(request.url == '/signup') {
+    return response.redirect('/signup');
   }
   // If the user isn't logged in, redirect them to the login page
   return response.redirect("/login");

@@ -101,8 +101,9 @@ app.set("view engine", "handlebars");
 // Routes
 console.log("in server.js")
 
-require("./routes/apiRoutes")(app);
+
 require("./routes/apiLogin")(app, passport);
+require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
