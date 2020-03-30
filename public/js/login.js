@@ -28,7 +28,7 @@ $(document).ready(function(){
         })
        
     });
-    $("#user-Signup").on("click", function(){
+    $("#user-Sign").on("click", function(){
         window.location.href ="/signup";
         
     });
