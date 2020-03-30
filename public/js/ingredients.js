@@ -1,19 +1,25 @@
 $(document).ready(function(){
-// var queryURL = "https://trackapi.nutritionix.com/v2/search/instant?query=vegetables"
-// $.ajax({
-//   url: queryURL,
-//   method: "GET",
-//   headers: {
-//     'x-app-id': '1b56da4f',
-//     'x-app-key': '1280ff1c8a5c5c57611dce7ae53c9e09'
-//   }
-// }).then(function(data){
-//   console.log("DATA: ", data)
-//   var ingredients = data.branded;
-//   for (let i = 0; i < ingredients.length; i++) {
-//     console.log("Shopping List: ", ingredients[i]);
-    
-//   }
-// })
-
-})
+    // function findfood(callback) {
+    //     var Ingredient = ingredient;
+    //     var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
+      
+    //     request(queryUrl, function(error, data) {
+    //       if (!error && data.statusCode === 200) {
+    //         var food = JSON.parse(data.body).results;
+          
+    //          callback(food);
+      
+    //         }
+    //       });
+    //     }
+    $("#isearch").on("click", function(event){
+        event.preventDefault();
+        // console.log("IS THIS CLICK OCCURING");
+       
+        var ingredient = $("#searchInput").val().trim();
+        // console.log()
+        // console.log("window location", window.location)
+        window.location.href= `/ingredients/${ingredient}`;
+        
+    });
+    });

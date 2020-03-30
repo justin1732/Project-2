@@ -3,33 +3,10 @@ var express = require ("express");
 // var router = express.Router();
 var request = require ("request");
 
-// router.get('/', function (req, res, next){
-//   request ({
-//  url: 'https://trackapi.nutritionix.com/v2/search/instant?query=' + 'orange',
-//  headers: {
-//    'x-app-id': '1b56da4f',
-//    'x-app-key': '1280ff1c8a5c5c57611dce7ae53c9e09',
-
-//  }, function (error, response, body){
-//    if (!error && response.statuscode ===200){
-//      console.log(body);
-//      res.json(body.self.food_name);
-
-//    }else
-//    res.json(error);
-//  }
-//   });
-//    });;
-
-
-
-  //  app.post ("index.js", function (req, res){
-  //   appendchild.res.json(body.self.food_name).('<div>"bob"</div>')
-  //  })
-
 module.exports = function(app) {
-  // Load index page
-  app.get("/", passportAuthenticationMiddleware, function(req, res) {
+
+  console.log("in html routes")
+  app.get("/",passportAuthenticationMiddleware, function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
 
       res.render('index', {
@@ -42,64 +19,71 @@ module.exports = function(app) {
     res.render('login', {});
   });
 
-
-  app.get("/ingredients", function(req, res) {
-    res.render('ingredients', {});
   
-    findIngredients((searchObj)=> {
-        console.log("Shopping List: ", searchObj)
-        res.json({
-          searchItems: searchObj
-        });
-      })
+  app.get("/ingredients",passportAuthenticationMiddleware, function(req, res) {
+    res.render('ingredients', {});
   });
-// res.setHeader("headers", ["x-app-id=1b56da4f","x-app-key=1280ff1c8a5c5c57611dce7ae53c9e09"])
-  function findIngredients(callback){
-    var iSearch = "vegetables"
+  app.get("/ingredients/:ingredient",passportAuthenticationMiddleware, function(req, res) {
     
-    // res.setHeader("headers", ["x-app-id=1b56da4f","x-app-key=1280ff1c8a5c5c57611dce7ae53c9e09"])
-    var queryURL = "https://trackapi.nutritionix.com/v2/search/instant?query=" + iSearch;
-    // var parameters = {
-    //   url: queryURL,
-    //   method: "GET",
-    //   headers: {
-    //     'x-app-id': '1b56da4f',
-    //     'x-app-key': '1280ff1c8a5c5c57611dce7ae53c9e09'
-    //   }
-    // }
-    request(queryURL, function(error, data){
-      if (!error && data.statusCode === 200) {
-        var ingredient = JSON.parse(data.body).results;
+    findIngredients((foodObj)=> {
+      console.log("The food object from root endpoint", foodObj)
       
-         callback(ingredient);
+    res.render('ingredients', {
+      foodItems: foodObj
+    });
+  }, req.params.ingredient)
+  });
+
+  function findIngredients(callback, iSearch){
+
+    var queryURL = "https://trackapi.nutritionix.com/v2/search/instant?query=" + iSearch;
+    var parameters = {
+      url: queryURL,
+      method: "GET",
+      headers: {
+        'x-app-id': '1b56da4f',
+        'x-app-key': '1280ff1c8a5c5c57611dce7ae53c9e09'
+      }
+    }
+    request(parameters, function(error, data){
+      if (!error && data.statusCode === 200) {
+        let body = JSON.parse(data.body);
+        // console.log(body);
+        var food = body.branded
+         callback(food);
   
         }
     })
     }
 
-  app.get("/recipe", function(req, res) {
-    res.render('recipe', {});
-  
-    // findfood((foodObj)=> {
-    //     console.log("The food object from root endpoint", foodObj)
-    //   })
+    app.get("/recipe",passportAuthenticationMiddleware, function(req, res) {
+      res.render('recipe', {});
+    });
+// recipe handlebars
+  app.get("/recipe/:ingredient",passportAuthenticationMiddleware, function(req, res) {
+
+    findfood((foodObj)=> {
+      console.log("The food object from root endpoint", foodObj)
+      
+    res.render('recipe', {
+      foodItems: foodObj
+    });
+  }, req.params.ingredient)
   });
-//Function for displaying information from the Recipe Puppy API
-// function findfood(callback) {
-//   //Need to somehow make this User Input from DBA or by searching
-//   var Ingredient = ingredient;
+  // recipe API function
+  function findfood(callback, ingredient) {
+ 
+    var queryUrl = "http://www.recipepuppy.com/api/?i=" + ingredient;
   
-//   var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
-
-//   request(queryUrl, function(error, data) {
-//     if (!error && data.statusCode === 200) {
-//       var food = JSON.parse(data.body).results;
-    
-//        callback(food);
-
-//       }
-//     });
-//   };
+    request(queryUrl, function(error, data) {
+      if (!error && data.statusCode === 200) {
+        var food = JSON.parse(data.body).results;
+      
+         callback(food);
+  
+        }
+      });
+    }
 
 
    // Load example page and pass in an example by id

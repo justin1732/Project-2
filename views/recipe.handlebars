@@ -17,8 +17,9 @@
 
         {{#each foodItems}}
             <h1>{{this.title}}</h1>
-            <iframe src="{{this.href}}"></iframe>
-
+            <h3><a href="{{this.href}}">{{this.href}}</a></h3>
+            <h3>{{this.ingredients}}</h3>
+            <img src="{{this.thumbnail}}" alt="{{this.title}}" width="250px" height="200px">
           {{/each}}
         </ul>
       </div>
@@ -26,4 +27,5 @@
   </div>
 
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/ingredients.js"></script>
 <script src="/js/recipe.js"></script>

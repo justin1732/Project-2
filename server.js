@@ -42,8 +42,11 @@ passport.use(new LocalStrategy(
   
   function(username, password, done) {
     console.log("In local strategy", username, password)
-    db.User.findAll({
-    
+    db.User.findOne({
+      where: {
+        userName: username, 
+        password: password
+      }
   }).then(function(data){
     // When a user tries to sign in this code runs
     // If we're trying to log in with an invalide username
@@ -53,7 +56,7 @@ passport.use(new LocalStrategy(
     var uname = data.userName;
     console.log("INT LOCAL STRATEGY", username, password)
 
-    if (!username || username.toLowerCase() != uname.toLowerCase()) {
+    if (!username || username !== uname) {
       return done(null, false, {
         message: "Incorrect username."
       });
@@ -96,12 +99,11 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+console.log("in server.js")
 
+require("./routes/apiRoutes")(app);
 require("./routes/apiLogin")(app, passport);
 require("./routes/htmlRoutes")(app);
-require("./routes/apiRoutes")(app);
-
-
 
 var syncOptions = { force: false };
 

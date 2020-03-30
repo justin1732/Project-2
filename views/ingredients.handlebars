@@ -12,30 +12,15 @@
          
         <ul id="food-list" class="list-group">
 {{body}}
-          {{!-- {{#each_upto foodItems 3}}
-            <h1>{{this.title}}</h1>
-            <iframe src="{{this.href}}"></iframe>
+          {{#each foodItems}}
+            <h1>{{this.food_name}}</h1>
+            <h3>Serving Size: {{this.serving_unit}}</h3>
+            <h3>Calories:{{this.nf_calories}}</h3>
+            <img src="{{this.photo.thumb}}" alt="{{this.food_name}}" width="250px" height="200px">
 
-          {{/each_upto}} --}}
+          {{/each}}
 
 
-
-
-{{!--           
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-           <
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-
-                 <div class="col ingredient">
-
-        </div>
-        <div class="col recipe">
-
-        </div> --}}
-          {{!-- {{/each}} --}}
         </ul>
       </div>
     </div>
@@ -45,3 +30,5 @@
 
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/ingredients.js"></script>
+<script src="/js/recipe.js"></script>
+

@@ -12,49 +12,33 @@ $(document).ready(function(){
     //         }
     //       });
     //     }
-    $("#search").on("click", function(event){
+    $("#rsearch").on("click", function(event){
         event.preventDefault();
-        console.log("IS THIS CLICK OCCURING");
+        // console.log("IS THIS CLICK OCCURING");
        
         var ingredient = $("#searchInput").val().trim();
-        // var food = {findfood};
+        // console.log()
+        // console.log("window location", window.location)
+        window.location.href= `/recipe/${ingredient}`
         
-        var queryUrl = "http://www.recipepuppy.com/api/?i=" + ingredient;
-      
-        fetch(queryUrl, {
-            mode: 'no-cors'
-        }).then((resp)=> {
-            
-            console.log("data from recipepuppy", resp)
-            return resp.json()
-        })
-        .then((data)=> {
-            // var food = JSON.parse(data.body).results;
-            console.log("data is: ", data);
-            // data.newProp = "adfda"
-            // return data
-        })
-        .catch((err) => {
-            console.log("THE ERR IS: ", err);
-        })
         
-          
-        // fetch("/api/recipe", {
-        //     method: 'GET', 
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(food)
-        // })
+        // fetch(`/recipe/${ingredient}`)
         // .then((res) => {
         //     return res.json()
         // })
         // .then((data) => {
         //     console.log("data rom recipe", data)
-        //     // window.location.href ="/recipe";
+        //     // let recipeList = data.foodItems
+        //     // for (let i = 0; i < recipeList.length; i++) {
+                
+                
+        //     // }
         // })
         // .catch((err)=> {
         //     console.log("err", err);
         // });
+        
+          
+        
     });
     });

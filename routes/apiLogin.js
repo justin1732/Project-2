@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app, passport) {
+    console.log("in api console.log routes")
     app.post("/api/login", passport.authenticate('local'), function(req, res) {
         // db.examples.create(req.body).then(function(dbExample) {
         //   res.json(dbExample);
