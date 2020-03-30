@@ -6,46 +6,21 @@
         <div class="transparent-box">
           <h2>This is the webpage for searching and seeing about ingredients.</h2>
         </div>
-                <!-- This is where you search -->
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <h3>Sample Recipe:</h3>
-                          
-            <input type="text" id="ingredient" name="ingredient" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-                <!-- end -->
 
         <h3>Sample Ingredients</h3>
 
          
         <ul id="food-list" class="list-group">
+{{body}}
+          {{#each foodItems}}
+            <h1>{{this.food_name}}</h1>
+            <h3>Serving Size: {{this.serving_unit}}</h3>
+            <h3>Calories:{{this.nf_calories}}</h3>
+            <img src="{{this.photo.thumb}}" alt="{{this.food_name}}" width="250px" height="200px">
 
-          {{!-- {{#each_upto foodItems 3}}
-            <h1>{{this.title}}</h1>
-            <iframe src="{{this.href}}"></iframe>
-
-          {{/each_upto}} --}}
+          {{/each}}
 
 
-
-
-{{!--           
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-           <
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-
-                 <div class="col ingredient">
-
-        </div>
-        <div class="col recipe">
-
-        </div> --}}
-          {{!-- {{/each}} --}}
         </ul>
       </div>
     </div>
@@ -54,4 +29,6 @@
 
 
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/ingredients.js"></script>
+<script src="/js/recipe.js"></script>
+

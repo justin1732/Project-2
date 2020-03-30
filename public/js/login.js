@@ -2,7 +2,8 @@ $(document).ready(function(){
     var userName;
     var password;
     
-    $("#user-Login").on("click", function(){
+    $("#user-Login").on("click", function(event){
+        event.preventDefault();
         console.log("IS THIS CLICK OCCURING");
         var userName = $("#usernameInput").val().trim();
         var password = $("#passwordInput").val().trim();

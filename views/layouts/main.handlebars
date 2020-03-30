@@ -17,6 +17,9 @@
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
   <script src="/js/login.js"></script>
+  <script src="/js/ingredients.js"></script>
+<script src="/js/recipe.js"></script>
+
   {{!-- <link href="https://fonts.googleapis.com/css?family=Arbutus+Slab&display=swap" rel="stylesheet"> --}}
   <link href="https://fonts.googleapis.com/css?family=Mallanna&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="/styles/styles.css">
@@ -51,8 +54,9 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Ingredient" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" placeholder="Ingredient" aria-label="Search" id="searchInput">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="rsearch">Recipe Search</button>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="isearch">Ingredient Search</button>
     </form>
   </div>
 </nav>
