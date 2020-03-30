@@ -28,21 +28,10 @@ $(document).ready(function(){
         })
        
     });
-    // $("#user-Signup").on("click", function(){
-    //     var userName = $(this).attr("userName").val().trim();
-    //     var password = $(this).attr("password").val().trim();
-    //     var login = {username:userName,password:password};
-    //     console.log(userName);
-    //     $.ajax({
-    //         method: "post",
-    //         url: "api/signup",
-    //         data: login
-    //     }).then(function() {
-    //         location.replace("/");
-    //     });
-    
-    
-    // });
+    $("#user-Signup").on("click", function(){
+        window.location.href ="/signup";
+        
+    });
 
 
 

@@ -52,8 +52,12 @@ function findfood(callback, ingredient) {
     if (request.user) {
       return next();
     }
+    if(request.url == '/signup') {
+      return response.redirect('/signup');
+    }
+    
     // If the user isn't logged in, redirect them to the login page
-    return response.redirect("/home");
+    return response.redirect("/login");
   }
 
 
