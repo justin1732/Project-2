@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $(".ingredientsAdd").on("click", function(){
+    $(".ingredientsAdd").on("click", function(event){
+        event.preventDefault();
         var ingredient = $(this).attr("data-ingredient");
         var userName = sessionStorage.getItem("user");
         console.log(ingredient, userName);
@@ -12,7 +13,8 @@ $(document).ready(function(){
         });
     });
 
-    $(".recipeAdd").on("click", function(){
+    $(".recipeAdd").on("click", function(event){
+        event.preventDefault();
         var recipe = $(this).attr("data-recipe");
         var userName = sessionStorage.getItem("user");
         console.log(recipe, userName);

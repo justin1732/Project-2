@@ -1,17 +1,5 @@
 $(document).ready(function(){
-    // function findfood(callback) {
-    //     var Ingredient = ingredient;
-    //     var queryUrl = "http://www.recipepuppy.com/api/?i=" + Ingredient;
-      
-    //     request(queryUrl, function(error, data) {
-    //       if (!error && data.statusCode === 200) {
-    //         var food = JSON.parse(data.body).results;
-          
-    //          callback(food);
-      
-    //         }
-    //       });
-    //     }
+    
     $("#isearch").on("click", function(event){
         event.preventDefault();
         // console.log("IS THIS CLICK OCCURING");
@@ -22,4 +10,8 @@ $(document).ready(function(){
         window.location.href= `/ingredients/${ingredient}`;
         
     });
+
+
+    
+
     });
