@@ -1,4 +1,7 @@
-<div id="home">
+<style>
+  body {background-image: url('https://www.bakingbusiness.com/ext/resources/2019/1/01142019/Ingredients2019.jpg?1547588432');}>
+</style>
+<div id="home"> 
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2 text-color">
@@ -7,18 +10,19 @@
           <h2>This is the webpage for searching and seeing about ingredients.</h2>
         </div>
 
-        <h3>Sample Ingredients</h3>
+        <h2>Ingredients Below</h2>
 
          
         <ul id="food-list" class="list-group">
 {{body}}
           {{#each foodItems}}
+            <div id="responseItem">
             <h1>{{this.food_name}}</h1>
-            <button class="btn" id="ingredientsAdd">Add to Favorites</button>
+            <button class="btn ingredientsAdd" id="recipeAdd" data-ingredient="{{this.food_name}}">Add to Favorites</button>
             <h3>Serving Size: {{this.serving_unit}}</h3>
             <h3>Calories:{{this.nf_calories}}</h3>
-            <img src="{{this.photo.thumb}}" alt="{{this.food_name}}" width="250px" height="200px">
-
+            <img src="{{this.photo.thumb}}" alt="{{this.food_name}}" width="250px" height="200px"><br><br>
+            </div>
           {{/each}}
 
 
@@ -32,4 +36,5 @@
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/ingredients.js"></script>
 <script src="/js/recipe.js"></script>
+<script src="/js/favorites.js"></script>
 

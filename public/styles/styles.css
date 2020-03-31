@@ -1,9 +1,13 @@
 .list-group-item {
   line-height: 2.5;
 }
+
 body {
-  background-image: url("https://res.cloudinary.com/grohealth/image/upload/v1583748171/DCUK/Content/iStock-857145602.jpg");
+  /* background-size: cover; */
+  background-repeat: repeat;
+  background-position: center;
 }
+
 .text-color {
    /* color: #30d2df; */
    color: #ffffff;
@@ -43,4 +47,39 @@ body {
   box-shadow: rgb(44, 43, 43) 4px 4px;
   margin: 10px;
   padding: 5px;
+}
+
+#responseItem {
+  background-color:gray;
+  background: rgba(128,128,128, 0.5);
+  border-width: 3px;
+  border-color: rgb(177, 245, 132);
+  border-radius: 3px;
+  border-style: solid;
+  padding: 5px;
+  margin: 5px;
+}
+#responseItem:hover {
+  border-color: white;
+  box-shadow: rgb(153, 110, 233) 2px 2px 25px;
+  animation-name: hoverOverTile;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+@keyframes hoverOverTile {
+  0% {box-shadow: rgb(153, 110, 233) 2px 2px 25px}
+  50% {box-shadow: rgb(232, 221, 252) 2px 2px 0.5px}
+  100% {box-shadow: rgb(153, 110, 233) 2px 2px 25px}
+}
+button:hover {
+  border-color: rgb(139, 67, 221);
+  border-width: 3px;
+  animation-name: hoverOverButton;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+@keyframes hoverOverButton {
+  0% {border-width: 3px}
+  50% {border-width: 1px}
+  100% {border-width: 3px}
 }

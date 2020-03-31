@@ -15,6 +15,11 @@
     "logging": false
   },
   "production": {
+    "host": "xefi550t7t6tjn36.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "xm00ubktcsnokzh1",
+    "password": "qhne2jfgd4eha00z",
+    "port": "3306",
+    "database": "s7jdel99ka3y8ru0",
     "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }

@@ -18,10 +18,13 @@ $(document).ready(function(){
         })
         .then((res) => {
             return res.json()
+            
         })
         .then((data) => {
             console.log("data rom login", data)
+            sessionStorage.setItem("user",data.uid);
             window.location.href ="/";
+            
         })
         .catch((err)=> {
             console.log("err", err);
