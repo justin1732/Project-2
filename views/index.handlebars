@@ -1,59 +1,55 @@
-<div id="home">
+<style>
+  body {
+    background-image: url('https://pro2-bar-s3-cdn-cf5.myportfolio.com/8a039178254ed6bc4173a7e27653f3f3/6dad7cd3-c9c9-4183-a7b2-57863ca5a21e_rw_3840.jpg?h=69925e63bce40c33364e457acddf4b87');
+  }
+</style>
+<div id="home"> 
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2 text-color">
         <h1>{{msg}}</h1>
-        <div class="transparent-box">
+        <div class="transparent-box"> 
           <h2>This app is for searching for ingredients to figure out their nutritional value and also for looking up recipes by entering a few ingredients. Please search bar above to look for an ingredient, or click "recipe" to be taken to that page.</h2>
         </div>
                 <!-- This is where you search -->
         <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <h3>Sample Recipe:</h3>
-                          
-            <input type="text" id="ingredient" name="ingredient" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-                <!-- end -->
-
-        <h3>Sample Ingredients</h3>
+          
+        <h3>Homepage</h3>
         <h1>Hello {{userName}}</h1>
 
          
         <ul id="food-list" class="list-group">
-
-          {{!-- {{#each_upto foodItems 3}}
-            <h1>{{this.title}}</h1>
-            <iframe src="{{this.href}}"></iframe>
-
-          {{/each_upto}} --}}
-
-
-
-
+{{!--                    
+            <button class="btn btn-danger float-right delete">ｘ</button> --}}
           
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-           
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
 
                  <div class="col ingredient">
+{{body}}
+          {{#each ingredientItems}}
+            <h1>{{this.food_name}}</h1>
+            <button class="btn" id="ingredientsAdd">Search for this ingredient</button>
+            <h3>Serving Size: {{this.serving_unit}}</h3>
+            <h3>Calories:{{this.nf_calories}}</h3>
+            <img src="{{this.photo.thumb}}" alt="{{this.food_name}}" width="250px" height="200px">
+
+          {{/each}}
 
         </div>
         <div class="col recipe">
-
-        </div> --}}
+        {{#each recipeItems}}
+            <h1>{{this.title}}</h1>
+            <button class="btn" id="recipeAdd">Search for this recipe</button>
+            <div  id="recipeLink">
+            <h4><a href="{{this.href}}">{{this.href}}</a></h4>
+            </div>
+            <h3>{{this.ingredients}}</h3>
+            <img src="{{this.thumbnail}}" alt="{{this.title}}" width="250px" height="200px">
+            
           {{/each}}
-        </ul>
+        </div>
+                  </ul>
       </div>
     </div>
-  </div>
-  <div id="recipeWindow">
-  
-    <iframe src="beep" height=400 width=800></iframe>
   </div>
   
 </div>

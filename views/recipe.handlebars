@@ -1,3 +1,8 @@
+<style>
+  body {
+    background-image: url('https://images.squarespace-cdn.com/content/v1/53b2a727e4b0aa7a7f58698d/1469075862737-NXNV2UZ2B0H3BMHI28GW/ke17ZwdGBToddI8pDm48kFlxBfYY5_N_910v3F7m2ch7gQa3H78H3Y0txjaiv_0foACs49-HBkG_F4C3fTziO6P9cVwYyUYTUoecoTELWl0bAo46xV05MoL3_PffCbiVOqpeNLcJ80NK65_fV7S1UbofG1KLLs3Q-_BW3OeRHQ3S83ivVlShJjTbdhpz2_iPt_E4_mC25allKlv8imDARw/10_artistic-food-photography-blue.jpg?format=1500w');
+  }
+</style>
 <div id="home">
   <div class="container">
     <div class="row">
@@ -9,21 +14,22 @@
                 <!-- This is where you search -->
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <h3>Sample Recipe:</h3>
+            <h2>Recipes Below</h2>
                           
                   </div>
                   
         <ul id="food-list" class="list-group">
 
         {{#each foodItems}}
+            <div id="responseItem">
             <h1>{{this.title}}</h1>
-            <button class="btn" id="recipeAdd">Add to Favorites</button>
+            <button class="btn recipeAdd" data-recipe="{{this.title}}">Add to Favorites</button>
             <div  id="recipeLink">
             <h4><a href="{{this.href}}">{{this.href}}</a></h4>
             </div>
             <h3>{{this.ingredients}}</h3>
-            <img src="{{this.thumbnail}}" alt="{{this.title}}" width="250px" height="200px">
-            
+            <img src="{{this.thumbnail}}" alt="{{this.title}}" width="250px" height="200px"><br><br>
+            </div>
           {{/each}}
         </ul>
       </div>
@@ -33,3 +39,4 @@
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/ingredients.js"></script>
 <script src="/js/recipe.js"></script>
+<script src="/js/favorites.js"></script>

@@ -1,8 +1,15 @@
-module.exports = function(sequelize, DataTypes) {
-    var ingredients = sequelize.define("Ingredients", {
-      name: DataTypes.STRING,
-      type: DataTypes.STRING, // ["vegetable", "fruit", "etc"]
-      quantity: DataTypes.INTEGER
+module.exports = function (sequelize, DataTypes) {
+  var ingredients = sequelize.define("Ingredients", {
+    title: DataTypes.STRING,
+      // ref: DataTypes.STRING, // ["vegetable", "fruit", "etc"]
     });
-    return ingredients;
-  };
+
+    ingredients.associate = function (models) {
+      ingredients.belongsTo(models.User, {
+        foreignKey: {
+          allowNull: true
+        }   });
+      }
+  return ingredients;
+
+}

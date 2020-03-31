@@ -54,6 +54,7 @@ passport.use(new LocalStrategy(
     console.log("Found user in data base", data.userName, data.password)
     var pword = data.password;
     var uname = data.userName;
+    var uid = data.id; 
     console.log("INT LOCAL STRATEGY", username, password)
 
     if (!username || username !== uname) {
@@ -68,7 +69,12 @@ passport.use(new LocalStrategy(
       });
     }
     // successful login, return the user -- which consists of an object holding the username
-    let user = {username};  
+    let user = {
+        userName: uname, 
+        uid: uid
+    };
+    ///JSON.stringify({userName: uname, id: uid});  
+    console.log("user: ", user)
     return done(null, user);
     }) 
     
@@ -76,12 +82,12 @@ passport.use(new LocalStrategy(
 ));
 
 passport.serializeUser(function(user, callback) {
-  callback(null, user.username);
+  callback(null, user);
 });
 
 // the deserialized user is an object with a username property -- which is availabe as request.user
-passport.deserializeUser(function(username, callback) {
-  callback(null, {username});
+passport.deserializeUser(function(user, callback) {
+  callback(null, {user});
 });
 
 
@@ -105,6 +111,7 @@ console.log("in server.js")
 require("./routes/apiLogin")(app, passport);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+require("./routes/apifavorites")(app);
 
 var syncOptions = { force: false };
 
