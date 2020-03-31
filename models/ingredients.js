@@ -1,15 +1,15 @@
 module.exports = function (sequelize, DataTypes) {
-  var ingredients = sequelize.define("Ingredients", {
+  var Ingredients = sequelize.define("Ingredients", {
     title: DataTypes.STRING,
       // ref: DataTypes.STRING, // ["vegetable", "fruit", "etc"]
     });
 
-    ingredients.associate = function (models) {
-      ingredients.belongsTo(models.User, {
+    Ingredients.associate = function (models) {
+      Ingredients.belongsTo(models.User, {
         foreignKey: {
           allowNull: true
         }   });
       }
-  return ingredients;
+  return Ingredients;
 
 }

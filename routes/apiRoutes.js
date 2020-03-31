@@ -5,14 +5,28 @@ module.exports = function(app) {
   // Get all examples
   console.log("In api routes")
   
-  app.get("/api/users",passportAuthenticationMiddleware, function(req, res) {
+  app.get("/api/users", function(req, res, request, response) {
     console.log("in /api/users")
-    db.User.findAll({})
-    .then(function(data) {
-      // console.log("the users are suppose to be: ", data);
-      res.json({users: data});
+    db.Recipes.findAll({
+     
+    }).then(function(data) {
+      console.log("Results: ", data)
+      res.json(data)
+      // res.render('index', {
+      //   user: req.user,
+      // })
     })
-  })
+    db.Ingredients.findAll({
+     
+    }).then(function(data) {
+      console.log("Results: ", data)
+      response.json(data)
+      // res.render('index', {
+      //   user: req.user,
+      // })
+    })
+    
+  });
 
   // Create a new example
   app.post("/api/examples", passportAuthenticationMiddleware, function(req, res) {
@@ -28,7 +42,7 @@ module.exports = function(app) {
     });
   });
 
-};
+ }; 
 
 
 function findfood(callback, ingredient) {
@@ -46,7 +60,7 @@ function findfood(callback, ingredient) {
   }
 
 
-   
+ 
 
   const passportAuthenticationMiddleware = (request, response, next) => {
     if (request.user) {
@@ -59,7 +73,6 @@ function findfood(callback, ingredient) {
     // If the user isn't logged in, redirect them to the login page
     return response.redirect("/login");
   }
-
 
 
 

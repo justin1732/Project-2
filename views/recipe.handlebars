@@ -23,7 +23,7 @@
         {{#each foodItems}}
             <div id="responseItem">
             <h1>{{this.title}}</h1>
-            <button class="btn recipeAdd" data-recipe="{{this.title}}">Add to Favorites</button>
+            <button class="btn recipeAdd" id="recipeAddBtn" data-recipe="{{this.title}}">Add to Favorites</button>
             <div  id="recipeLink">
             <h4><a href="{{this.href}}">{{this.href}}</a></h4>
             </div>

@@ -15,6 +15,8 @@ module.exports = function(app) {
     });
   });
 
+  
+
   app.get("/login", function(req, res) {
     res.render('login', {});
   });
@@ -28,11 +30,11 @@ module.exports = function(app) {
   });
   app.get("/ingredients/:ingredient",passportAuthenticationMiddleware, function(req, res) {
     
-    findIngredients((foodObj)=> {
-      console.log("The food object from root endpoint", foodObj)
+    findIngredients((ingred)=> {
+      console.log("The food object from root endpoint", ingred)
       
     res.render('ingredients', {
-      foodItems: foodObj
+      foodItems: ingred
     });
   }, req.params.ingredient)
   });

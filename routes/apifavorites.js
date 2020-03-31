@@ -10,9 +10,7 @@ module.exports = function(app) {
             console.log("err",err);
         })
     });
-}
 
-module.exports = function(app) {
     app.post("/api/Rfavorite", function(req,res){
         console.log("working", req.body);
         // res.json({message:"hello"});

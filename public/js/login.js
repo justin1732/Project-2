@@ -23,7 +23,8 @@ $(document).ready(function(){
         .then((data) => {
             console.log("data rom login", data)
             sessionStorage.setItem("user",data.uid);
-            window.location.href ="/";
+            // user = data.uid
+            window.location.href = "/";
             
         })
         .catch((err)=> {

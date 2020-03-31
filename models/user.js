@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.associate = function (models){
+       User.hasMany(models.Recipes)
       User.hasMany(models.Ingredients)
     }
     return User;
