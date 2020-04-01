@@ -1,32 +1,47 @@
 var db = require("../models");
 const request = require("request");
+// var UserId = 3;
 
 module.exports = function(app) {
   // Get all examples
   console.log("In api routes")
   
-  app.get("/api/users", function(req, res, request, response) {
-    console.log("in /api/users")
-    db.Recipes.findAll({
-     
-    }).then(function(data) {
-      console.log("Results: ", data)
-      res.json(data)
-      // res.render('index', {
-      //   user: req.user,
-      // })
-    })
-    db.Ingredients.findAll({
-     
-    }).then(function(data) {
-      console.log("Results: ", data)
-      response.json(data)
-      // res.render('index', {
-      //   user: req.user,
-      // })
-    })
+//   app.get("/api/users", passportAuthenticationMiddleware, function(req, res) {
+//     console.log("in /api/users");
+//     console.log(res.json(UserId));
+//     var something = "this thing";
+//   //   db.User.findAll({
+//   //       include: [{
+//   //         model: db.Recipes,
+//   //         where: {
+//   //         UserId: res.json(UserId)
+//   //       }
+//   //       }]
+//   //   }).then(function(data) {
+//   //     console.log("Results: ", data)
+//   //     res.json(data);
+      
+//   // });
     
-  });
+//   });
+//   app.get("/api/users2", passportAuthenticationMiddleware, function(req, res) {
+//     console.log("in /api/users2")
+//      db.Ingredients.findAll({
+//       where: {
+//         UserId: id
+//       },
+//       include: [{
+//         model: db.User, 
+//         where: {
+//           id: UserId
+//         }
+//       }]
+//   }).then(function(data) {
+//     console.log("Results: ", data)
+//     res.json(data);
+    
+//   });
+// });
 
   // Create a new example
   app.post("/api/examples", passportAuthenticationMiddleware, function(req, res) {

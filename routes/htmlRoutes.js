@@ -7,16 +7,35 @@ module.exports = function(app) {
 
   console.log("in html routes")
   app.get("/",passportAuthenticationMiddleware, function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-
-      res.render('index', {
-        user: req.user,
-      })
-    });
+    res.render('index', {});
   });
 
-  
+  // app.get(`/:id`, passportAuthenticationMiddleware, function(req, res) {
 
+  //   getFavorites((stuff)=> {
+  //     console.log("The food object from root endpoint", stuff)
+      
+  //   res.render('index', {
+  //     recipeItems: stuff
+  //   });
+  // }, req.params.id)
+  // });
+  // function getFavorites(callback){
+  //   var parameters = {
+  //     url: "/api/users",
+  //     method: "GET",
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }
+  //   request(parameters, function(error, data){
+  //     if (!error && data.statusCode === 200) {
+  //       let stuff = JSON.parse(data)
+  //        callback(stuff);
+  
+  //       }
+  //   })
+  //   }
   app.get("/login", function(req, res) {
     res.render('login', {});
   });
