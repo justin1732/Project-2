@@ -15,7 +15,7 @@
         <form class="clearfix mb-4" action="POST">
           
         <div class="transparent-box">      
-          <h2>All the indredients and recipes you've saved will appear on this page.</h2>        
+          <h2>All the ingredients and recipes you've saved will appear on this page.</h2>        
         </div>
          
         <ul id="food-list" class="list-group">
@@ -23,19 +23,18 @@
             <button class="btn btn-danger float-right delete">ｘ</button> --}}
           
 
-                 <div class="col ingredient">
+               
 {{body}}
-          {{#each ingredientItems}}
-
-            <h1>{{this.id}}{{this.title}}</h1>
-            
-           
+<div id="responseItem">
+          {{#each ingredients}}
+            <h1>{{this.title}}</h1>
+                     
           {{/each}}
 
-        </div>
-        <div class="col recipe">
-        {{#each recipeItems}}
-            <h1>{{this.id}}{{this.title}}</h1>
+        </div></ul>
+        <div id="responseItem">
+         {{#each recipes}}
+            <h1>{{this.title}}</h1>
           {{/each}}
         </div>
                   </ul>
@@ -48,4 +47,4 @@
 
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
-<script src="/js/favorites.js"></script>
+{{!-- <script src="/js/favorites.js"></script> --}}
