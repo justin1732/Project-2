@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var userName = sessionStorage.getItem("user");
     $(".ingredientsAdd").on("click", function(event){
         event.preventDefault();
         var ingredient = $(this).attr("data-ingredient");
@@ -26,4 +27,44 @@ $(document).ready(function(){
             body: JSON.stringify({title: recipe, UserId: userName})
         });
     });
+    function users(){
+    fetch("/api/users",{
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({UserId: userName})
+    }).then((res) => {
+        return res.json()
+        
+    })
+    .then((data)=>{
+        console.log("data: ", data);
+        var recipeItems = data;
+    })  
+    .catch((err)=> {
+        console.log("err", err);
+    });
+}
+function users2 (){
+    fetch("/api/users2",{
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({UserId: userName})
+    }).then((res) => {
+        return res.json()
+        
+    })
+    .then((data)=>{
+        console.log("data: ", data);
+        var ingredientItems = data;
+    })
+    .catch((err)=> {
+        console.log("err", err);
+    });
+}
+users();
+users2();
 });

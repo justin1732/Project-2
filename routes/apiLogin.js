@@ -10,10 +10,17 @@ module.exports = function(app, passport) {
         //does password match
         //if there okay
         //if not 401
-        console.log("req.user", req.user);
+        console.log("req.user", req.user.id);
         res.json(req.user);
 
       });
+    //   app.get("/api/login", function(req, res){
+    //       db.User.findAll({
+    //           where: {
+    //               id: req.user.id
+    //           }
+    //       })
+    //   })
 
     app.post("/api/signup", function(req,resp){
         // db.User.find(req.body).then(function(dbUser){

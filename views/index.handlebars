@@ -26,25 +26,16 @@
                  <div class="col ingredient">
 {{body}}
           {{#each ingredientItems}}
-            <h1>{{this.food_name}}</h1>
-            <button class="btn" id="ingredientsAdd">Search for this ingredient</button>
-            <h3>Serving Size: {{this.serving_unit}}</h3>
-            <h3>Calories:{{this.nf_calories}}</h3>
-            <img src="{{this.photo.thumb}}" alt="{{this.food_name}}" width="250px" height="200px">
 
+            <h1>{{this.id}}{{this.title}}</h1>
+            
+           
           {{/each}}
 
         </div>
         <div class="col recipe">
         {{#each recipeItems}}
-            <h1>{{this.title}}</h1>
-            <button class="btn" id="recipeAdd">Search for this recipe</button>
-            <div  id="recipeLink">
-            <h4><a href="{{this.href}}">{{this.href}}</a></h4>
-            </div>
-            <h3>{{this.ingredients}}</h3>
-            <img src="{{this.thumbnail}}" alt="{{this.title}}" width="250px" height="200px">
-            
+            <h1>{{this.id}}{{this.title}}</h1>
           {{/each}}
         </div>
                   </ul>
@@ -57,3 +48,4 @@
 
 <script type="/javatextscript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="/js/favorites.js"></script>
