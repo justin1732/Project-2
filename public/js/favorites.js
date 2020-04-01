@@ -27,50 +27,50 @@ $(document).ready(function(){
             body: JSON.stringify({title: recipe, UserId: userName})
         });
     });
-    function users(){
-        fetch("/api/users",{
-            method:"POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({UserId: userName})
-        }).then((res) => {
-            return res.json()
+//     function users(){
+//         fetch("/api/users",{
+//             method:"POST",
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({UserId: userName})
+//         }).then((res) => {
+//             return res.json()
             
-        })
-        // .then((data)=>{
-    //     var recipeItems = data
-    //     res.render('index', {
-    //         recipeItems: recipeItems
-    //       })
-    //     })    
-        .then((data)=>{
-            console.log("Recipes data: ", data);
-            var ingredientItems = data;
-        })
-    .catch((err)=> {
-        console.log("err", err);
-    });
-}
-function users2 (){
-    fetch("/api/users2",{
-        method:"POST",
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({UserId: userName})
-    }).then((res) => {
-        return res.json()
+//         })
+//         // .then((data)=>{
+//     //     var recipeItems = data
+//     //     res.render('index', {
+//     //         recipeItems: recipeItems
+//     //       })
+//     //     })    
+//         .then((data)=>{
+//             console.log("Recipes data: ", data);
+//             var ingredientItems = data;
+//         })
+//     .catch((err)=> {
+//         console.log("err", err);
+//     });
+// }
+// function users2 (){
+//     fetch("/api/users2",{
+//         method:"POST",
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({UserId: userName})
+//     }).then((res) => {
+//         return res.json()
         
-    })
-    .then((data)=>{
-        console.log("Ingredient data: ", data);
-        var ingredientItems = data;
-    })
-    .catch((err)=> {
-        console.log("err", err);
-    });
-}
+//     })
+//     .then((data)=>{
+//         console.log("Ingredient data: ", data);
+//         var ingredientItems = data;
+//     })
+//     .catch((err)=> {
+//         console.log("err", err);
+//     });
+// }
 users();
 users2();
 });
