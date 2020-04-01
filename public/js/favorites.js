@@ -71,6 +71,6 @@ $(document).ready(function(){
 //         console.log("err", err);
 //     });
 // }
-users();
-users2();
+// users();
+// users2();
 });
