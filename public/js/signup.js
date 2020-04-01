@@ -44,6 +44,7 @@ $(document).ready(function(){
         .then((response) => {
             console.log("res: ", response)
             //return response.json()
+            ;
         })
         // .then((data) => {
         //     console.log("data rom signup", data)
@@ -52,6 +53,7 @@ $(document).ready(function(){
         .catch((err)=> {
             console.log("err", err);
         })
+        window.location.href ="/"
        
     });
    
