@@ -1,8 +1,8 @@
 # Project-2 Code Chow
-Concept:
+## Concept:
 This app was created by Group Forager as our second big project for the University of Denver Coding Bootcamp. With pandemic murmurings on the rise, we wanted to create an app that could allow users to see the nutritional value of food in their pantries as well as come up with and be able to use recipes based on those ingredients. This Node JS and Heroku-deployed app is the result of that.
 
-How to use in Heroku:
+## How to use in Heroku:
 Deployed at https://project2player2pt2.herokuapp.com/
 
 1.  You will initially land on the login/create account page.  If you don't have an account, you'll need to create one.
